@@ -1,0 +1,6 @@
+langchain
+openai
+crewai
+duckduckgo-search
+faiss-cpu
+python-dotenv
