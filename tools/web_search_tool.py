@@ -1,13 +1,12 @@
-# tools/web_search_tool.py
+# tools/my_duckduckgo_tool.py
 
-from langchain_core.tools import tool
-from duckduckgo_search import DDGS
+from crewai.tools import BaseTool
+from langchain_community.tools import DuckDuckGoSearchRun
 
-@tool
-def web_search(query: str) -> str:
-    """Searches the web using DuckDuckGo and returns relevant results."""
-    with DDGS() as ddgs:
-        results = ddgs.text(query, max_results=5)
-        if not results:
-            return "No results found."
-        return "\n\n".join([f"{r['title']}\n{r['href']}\n{r['body']}" for r in results])
+class MyCustomDuckDuckGoTool(BaseTool):
+    name: str = "DuckDuckGo Search Tool"
+    description: str = "Search the web for a given query and return relevant results."
+
+    def _run(self, query: str) -> str:
+        duckduckgo_tool = DuckDuckGoSearchRun()
+        return duckduckgo_tool.run(query)

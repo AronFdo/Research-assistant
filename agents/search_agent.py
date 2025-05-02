@@ -2,13 +2,13 @@
 
 from crewai import Agent
 from langchain_openai import ChatOpenAI
-from tools.web_search_tool import web_search
+from tools.web_search_tool import MyCustomDuckDuckGoTool
 
 def create_search_agent():
     return Agent(
         role="Web Researcher",
-        goal="Find current, accurate data from the internet.",
-        backstory="You are an internet research expert.",
-        tools=[web_search],  # Correct tool format
-        llm=ChatOpenAI(temperature=0.3, model="gpt-3.5-turbo")
+        goal="Search the internet for the most relevant and recent data.",
+        backstory="You're a web data expert who excels at finding accurate, up-to-date info.",
+        tools=[MyCustomDuckDuckGoTool()],
+        llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0.3)
     )

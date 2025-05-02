@@ -88,6 +88,7 @@ Aron Fernando, built as part of AI Agent learning journey
 ---
 
 ## 🌐 Future Extensions
-- Add UI using Streamlit
+- Chat history
+- Vector Search for past research
 - Support for PDF & CSV summarization
 - Trend visualization
